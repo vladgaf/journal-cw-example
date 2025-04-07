@@ -38,5 +38,5 @@ pip install flask requests
 }
 ```
 `admin_key` - ключ доступа к админ-панели
-`ai_key` - API-ключ нейросети Le Chat Mistral.
+`ai_key` - API-ключ нейросети Le Chat Mistral.\
 *При отсутствии API-ключа/ошибке API будут генерироваться случайные оценки эмоциональной окраски*

@@ -6,7 +6,6 @@ import os
 from repository import Repository
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  # Для подписи cookies
 
 CONFIG_FILE = os.path.join("config", "settings.json")
 DEFAULT_CONFIG = {
