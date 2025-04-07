@@ -12,7 +12,7 @@ class Repository:
         self.data_file = data_file
         self.api_key = api_key
         self.use_api = api_key != ""
-        if self.use_api:
+        if not self.use_api:
             print("API-ключ не предоставлен, используется генератор случайных ответов")
         else:
             print(f"Получен API-ключ {self.api_key}")
@@ -42,6 +42,7 @@ class Repository:
                     json= data,
                     headers=headers
                 ).json()
+                print("Получен", response['choices'][0]['message']['content'], "отзыв")
                 return response['choices'][0]['message']['content']
             except BaseException:
                 print("Ошибка отправки запроса")
@@ -68,7 +69,7 @@ class Repository:
             "id": len(messages) + 1,
             "name": name,
             "text": text,
-            "sentiment": sentiment,
+            "sentiment": sentiment.lower(),
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M")
         }
         messages.insert(0, new_message)
