@@ -64,14 +64,14 @@ class Repository:
     def add_message(self, name, text):
         messages = self.load_messages()
         sentiment = self.get_sentiment(text)  # Вызов API
-        
-        messages.append({
+        new_message = {
             "id": len(messages) + 1,
             "name": name,
             "text": text,
             "sentiment": sentiment,
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M")
-        })
+        }
+        messages.insert(0, new_message)
         self.save_messages(messages)
 
     def delete_message(self, message_id):
