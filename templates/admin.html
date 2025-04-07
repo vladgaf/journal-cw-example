@@ -10,15 +10,38 @@
         <h1>Управление отзывами</h1>
         <a href="/" class="btn">На главную</a>
 
+
         <div class="messages">
             {% for message in messages %}
-            <div class="message">
-                <strong>{{ message.name }}</strong>
-                <span class="date">{{ message.timestamp }}</span>
-                <p>{{ message.text }}</p>
-                <a href="/delete/{{ message.id }}" class="btn delete">Удалить</a>
+            <div class="message {{ message.sentiment }}">
+                <div class ="message-title">
+                    
+                    <strong>
+                        <span class="sentiment-icon">
+                            {% if message.sentiment == "positive" %}
+                                😊
+                            {% elif message.sentiment == "negative" %}
+                                😠
+                            {% else %}
+                                😐
+                            {% endif %}
+                        </span>
+                        {{ message.name }}
+                    </strong>
+                    <span class="date">{{ message.timestamp }}</span>
+                </div>
+                <div class = "message-content">
+                    <p>{{ message.text }}</p>
+                    <a href="/delete/{{ message.id }}" class="delete">
+                        <span class = "control-title">Удалить</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
             {% endfor %}
+            
         </div>
     </div>
 </body>

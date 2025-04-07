@@ -1,102 +1,156 @@
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4eee8;
+    color: #333;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+}
+
+a:link {
     color: #333;
+    text-decoration: none;
+}
+a:visited {
+    color: #333;
+    text-decoration: none;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
+    color: #2c3e50;
     text-align: center;
-    color: #444;
+    margin-bottom: 25px;
 }
 
-/* Формы */
-form {
-    margin-bottom: 20px;
-}
-
-input, textarea, button {
+form{
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-button {
-    background: #5cb85c;
-    color: white;
-    border: none;
-    cursor: pointer;
+/* Фиксированные размеры для полей ввода */
+input[type="text"],
+textarea {
+    width: calc(100% - 24px); /* Фиксированная ширина с учетом padding */
+    padding: 12px;
+    margin: 0 0 15px 0; /* Отступ только снизу */
+    border: 1px solid #dbe1e8;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Важно для правильного расчета ширины */
+    background-color: #f8fafc;
+    transition: border-color 0.3s;
+    justify-content: center;
+    resize: none;
 }
 
-button:hover {
-    background: #4cae4c;
-}
-
-/* Сообщения */
-.messages {
-    margin-top: 20px;
-}
-
-.message {
-    background: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-left: 4px solid #5cb85c;
-    position: relative;
-}
-
-.message .date {
-    color: #777;
-    font-size: 0.9em;
-    display: block;
-    margin: 5px 0;
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #ea9a62;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(219, 133, 52, 0.2);
 }
 
 /* Кнопки */
-.btn {
-    display: inline-block;
-    padding: 5px 10px;
-    background: #337ab7;
+button, .btn {
+    background-color: #ea9a62;
     color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-.btn.delete {
-    background: #d9534f;
-}
-
-.btn:hover {
-    opacity: 0.8;
-}
-
-/* Ошибки */
-.error {
-    color: #d9534f;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 15px 0;
     text-align: center;
 }
 
+button:hover, .btn:hover {
+    background-color: #eeaa45;
+}
+
+/* Сообщения */
+.messages{
+    width: 100%;
+}
+
+.message-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date{
+    font-size: 10px;
+    color: #9c9c9c;
+}
+
+.message {
+    background-color: #ff800027;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ea9a62;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Цвета для сентимент-анализа */
 .message.positive {
-    border-left: 4px solid #5cb85c; /* Зеленый */
+    border-left-color: #2ecc71;
+    background-color: #2ecc7027;
 }
 .message.negative {
-    border-left: 4px solid #d9534f; /* Красный */
+    border-left-color: #e74c3c;
+    background-color: #e74d3c27;
 }
 .message.neutral {
-    border-left: 4px solid #f0ad4e; /* Желтый */
+    border-left-color: #f39c12;
+    background-color: #f39c1227;
+}
+
+.delete{
+    background: #c03a2b31;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.control-title{
+    margin-right: 10px;
+    font-size: 14px;
+}
+.delete:hover {
+    background-color: #c03a2bc7;
+}
+
+
+/* Адаптивность для мобильных */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    input[type="text"], textarea {
+        padding: 10px;
+    }
 }
