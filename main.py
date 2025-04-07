@@ -14,7 +14,7 @@ DEFAULT_CONFIG = {
 }
 
 if not os.path.exists(CONFIG_FILE):
-    print("CONFIG NOT PROVIDED, CREATING DEFAULT")
+    print("Конфиг отсутствует, добавлен конфиг по умолчанию")
     os.makedirs(os.path.dirname(CONFIG_FILE), exist_ok=True)
     with open(CONFIG_FILE, "w", encoding="utf-8") as f:
         json.dump(DEFAULT_CONFIG, f, indent=4)

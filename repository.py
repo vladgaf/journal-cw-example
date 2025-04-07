@@ -50,7 +50,7 @@ class Repository:
         
         return random.choice(["positive", "negative", "neutral"])
     
-    #CRUD
+    # CRUD
 
     def load_messages(self):
         if not os.path.exists(self.data_file):
