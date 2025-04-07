@@ -18,7 +18,7 @@
 
 - **Backend**: Python + Flask
 - **Frontend**: HTML5, CSS3, Jinja2
-- **Анализ текста**: Sentiment Analysis API
+- **Анализ текста**: Le Chat Mistral
 - **Хранение данных**: JSON-файлы
 - **Безопасность**: Cookies для авторизации
 
@@ -27,3 +27,13 @@
 ### 1. Установка зависимостей
 ```bash
 pip install flask requests
+```
+### 2. Файл настроек
+Находится по пути `config/settings.json`
+При первом запуске файл создастся автоматически со следующими данными:
+```json
+{
+    "admin_key": "admin",
+    "ai_key": ""
+}
+```
