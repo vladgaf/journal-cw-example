@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Гостевой журнал</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <p>Hello!</p>
+    <div class="container">
+        <h1>Оставьте отзыв</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <textarea name="text" placeholder="Ваш отзыв" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {{ message.sentiment }}">
+                <span class="sentiment-icon">
+                    {% if message.sentiment == "positive" %}
+                        😊
+                    {% elif message.sentiment == "negative" %}
+                        😠
+                    {% else %}
+                        😐
+                    {% endif %}
+                </span>
+                <strong>{{ message.name }}</strong>
+                <span class="date">{{ message.timestamp }}</span>
+                <p>{{ message.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
